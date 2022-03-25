@@ -12,6 +12,7 @@ function App() {
       .then(json => setContent(json))
       .then(console.log(content))
   }, []);
+  
 
   // Use Effect to fetch data from my strapi API
   useEffect(() => {
