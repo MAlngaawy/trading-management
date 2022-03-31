@@ -27,10 +27,12 @@ function App() {
         console.log('addCusto')
         fetch('http://localhost:1337/api/customers', {
             method: 'POST',
-            body: {
-                name,
-                debt,
+            headers: {
+                'Content-Type': 'application/json',
             },
+            body: JSON.stringify({
+                data: { name: name, debt: '0' },
+            }),
         })
     }
 
@@ -51,9 +53,13 @@ function App() {
                     className="border-2 my-4"
                     type="text"
                     aria-label="name"
+                    onChange={(e) => setNewCust(e.target.value)}
                 />
                 <input className="border-2" type="number" aria-label="number" />
-                <button className="bg-gray-500 p-4 my-4 rounded-xl text-white  ">
+                <button
+                    onClick={() => addCusto(newCust, 0)}
+                    className="bg-gray-500 p-4 my-4 rounded-xl text-white  "
+                >
                     add customer
                 </button>
             </div>
