@@ -1,18 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
 
 function App() {
     const [data, setData] = useState([])
+    const [newCust, setNewCust] = useState({})
 
     useEffect(() => {
         console.log(data.length)
     }, [data])
 
     const fetchData = () => {
-        console.log('Clicked')
+        console.log('fetchData')
         fetch('http://localhost:1337/api/customers')
             .then((res) => res.json())
             .then(({ data }) => setData(data))
+    }
+
+    const daleteCusto = (id) => {
+        console.log('deleteCusto')
+        fetch(`http://localhost:1337/api/customers/${id}`, {
+            method: 'DELETE',
+        }).then((res) => fetchData())
+    }
+
+    const addCusto = (name, debt) => {
+        console.log('addCusto')
+        fetch('http://localhost:1337/api/customers', {
+            method: 'POST',
+            body: {
+                name,
+                debt,
+            },
+        })
     }
 
     return (
@@ -24,6 +43,17 @@ function App() {
             >
                 Show Custmorea
             </button>
+            <div className="add">
+                <input
+                    className="border-2 my-4"
+                    type="text"
+                    aria-label="name"
+                />
+                <input className="border-2" type="number" aria-label="number" />
+                <button className="bg-gray-500 p-4 my-4 rounded-xl text-white  ">
+                    add customer
+                </button>
+            </div>
             <ul>
                 {data.length == 0
                     ? 'Lol'
@@ -31,7 +61,7 @@ function App() {
                           return (
                               <li
                                   key={id}
-                                  className="flex justify-around align-middle"
+                                  className="my-4 flex justify-around align-middle text-sm"
                               >
                                   <p className="inline-block">
                                       {attributes.name}
@@ -39,7 +69,10 @@ function App() {
                                   <p className="inline-block">
                                       {attributes.debt}
                                   </p>
-                                  <button className="p-4 bg-red-500 rounded-sm text-white cursor-pointer hover:scale-110 transform transition-all text-sm font-bold">
+                                  <button
+                                      onClick={() => daleteCusto(id)}
+                                      className="p-1 h-14 bg-red-500 rounded-sm text-white cursor-pointer hover:scale-110 transform transition-all text-sm font-bold"
+                                  >
                                       delete this customer
                                   </button>
                               </li>
