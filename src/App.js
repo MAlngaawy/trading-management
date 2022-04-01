@@ -3,7 +3,12 @@ import './App.css'
 
 function App() {
     const [data, setData] = useState([])
-    const [newCust, setNewCust] = useState({})
+    const [newCust, setNewCust] = useState({
+        name: '',
+        debt: '',
+    })
+    const nameRef = useRef('Fill It')
+    const debtRef = useRef('Num It')
 
     useEffect(() => {
         console.log(data.length)
@@ -24,45 +29,59 @@ function App() {
     }
 
     const addCusto = (name, debt) => {
-        console.log('addCusto')
+        console.log(name, debt)
         fetch('http://localhost:1337/api/customers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                data: { name: name, debt: '0' },
+                data: { name: name, debt: debt },
             }),
         })
+            .then(() => fetchData())
+            .then(() => {
+                nameRef.current.value = ''
+                debtRef.current.value = ''
+            })
     }
 
     return (
         <div className="App">
-            <h1 className="bg-main text-white p-4 inline-block rounded-md hover:scale-150 cursor-pointer transition-all transform  text-3xl font-bold underline">
-                Hello world!
-            </h1>
-            <h1 className=" font-bold underline">Hello world!</h1>
+            {/* Buttom To Fetch Data */}
             <button
                 onClick={() => fetchData()}
                 className="p-4 bg-cyan-600 text-white cursor-pointer hover:scale-125 transform transition-all text-sm font-bold"
             >
-                Show Custmorea
+                Show Customers
             </button>
+
+            {/* Inputs to POST data */}
             <div className="add">
                 <input
+                    ref={nameRef}
                     className="border-2 my-4"
                     type="text"
                     aria-label="name"
-                    onChange={(e) => setNewCust(e.target.value)}
                 />
-                <input className="border-2" type="number" aria-label="number" />
+                <input
+                    className="border-2"
+                    type="number"
+                    aria-label="number"
+                    ref={debtRef}
+                />
                 <button
-                    onClick={() => addCusto(newCust, 0)}
+                    onClick={() =>
+                        addCusto(nameRef.current.value, debtRef.current.value)
+                    }
                     className="bg-gray-500 p-4 my-4 rounded-xl text-white  "
                 >
                     add customer
                 </button>
             </div>
+
+            {/* Un Orderd List for showing Data */}
+
             <ul>
                 {data.length == 0
                     ? 'Lol'
