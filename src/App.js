@@ -3,10 +3,6 @@ import './App.css'
 
 function App() {
     const [data, setData] = useState([])
-    const [newCust, setNewCust] = useState({
-        name: '',
-        debt: '',
-    })
     const nameRef = useRef('Fill It')
     const debtRef = useRef('Num It')
 
@@ -14,6 +10,7 @@ function App() {
         console.log(data.length)
     }, [data])
 
+    // fetch Data unction
     const fetchData = () => {
         console.log('fetchData')
         fetch('http://localhost:1337/api/customers')
@@ -21,6 +18,7 @@ function App() {
             .then(({ data }) => setData(data))
     }
 
+    // Delete customer functio
     const daleteCusto = (id) => {
         console.log('deleteCusto')
         fetch(`http://localhost:1337/api/customers/${id}`, {
@@ -28,6 +26,7 @@ function App() {
         }).then((res) => fetchData())
     }
 
+    // Add Customer Function
     const addCusto = (name, debt) => {
         console.log(name, debt)
         fetch('http://localhost:1337/api/customers', {
@@ -46,6 +45,7 @@ function App() {
             })
     }
 
+    // The Returned Doms
     return (
         <div className="App">
             {/* Buttom To Fetch Data */}
@@ -81,7 +81,6 @@ function App() {
             </div>
 
             {/* Un Orderd List for showing Data */}
-
             <ul>
                 {data.length == 0
                     ? 'Lol'
