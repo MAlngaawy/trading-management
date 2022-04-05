@@ -7,6 +7,7 @@ const CUSTOMERS = gql`
     query getCustomers {
         customers {
             data {
+                id
                 attributes {
                     name
                 }
@@ -16,18 +17,14 @@ const CUSTOMERS = gql`
 `
 
 function App() {
-    const [loading, error, data] = useQuery(CUSTOMERS)
+    const { loading, error, data } = useQuery(CUSTOMERS)
 
-    // useEffect(() => {
-    //     console.log(data)
-    // }, [data])
+    if (loading) return <p>Loading ....</p>
+    if (error) return <p>error ....</p>
 
-    // if (loading) return <p>Loading ....</p>
-    // if (error) return <p>error ....</p>
-
-    // if (data) {
-    //     console.log(data)
-    // }
+    if (data) {
+        console.log(data)
+    }
 
     // The Returned Doms
     return <div className="App"> Lolo </div>
