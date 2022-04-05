@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-function Customers(data) {
+function Customers({ data }) {
     // const [data, setData] = useState([])
     // const nameRef = useRef('Fill It')
     // const debtRef = useRef('Num It')

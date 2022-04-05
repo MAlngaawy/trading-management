@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useQuery, gql } from '@apollo/client'
+import Customers from './components/customers'
 
 import './App.css'
 
@@ -10,6 +11,7 @@ const CUSTOMERS = gql`
                 id
                 attributes {
                     name
+                    debt
                 }
             }
         }
@@ -23,11 +25,16 @@ function App() {
     if (error) return <p>error ....</p>
 
     if (data) {
-        console.log(data)
+        console.log(data.customers.data)
     }
 
     // The Returned Doms
-    return <div className="App"> Lolo </div>
+    return (
+        <div className="App">
+            <h1>Test From App.js</h1>
+            <Customers data={data ? data.customers.data : []} />
+        </div>
+    )
 }
 
 export default App
