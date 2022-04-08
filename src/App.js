@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 import Customers from './components/customers'
 import { Routes, Route, Link } from 'react-router-dom'
+import Button from './components/Button'
 
 import './App.css'
 
@@ -54,11 +55,8 @@ const Home = () => {
     return (
         <div>
             <p className="text-lg">Hello This is Home Component</p>
-            <Link
-                to="/customers"
-                className="m-4 bg-black text-white p-4 text-sm rounded-sm"
-            >
-                Click To Go To Customers Page
+            <Link to="/customers">
+                <Button text="Click To Go To Customers Page" />
             </Link>
         </div>
     )

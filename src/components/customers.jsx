@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Button from './Button'
 
 function Customers({ data }) {
     return (
@@ -13,11 +14,8 @@ function Customers({ data }) {
                           )
                       })}
             </ul>
-            <Link
-                to="/"
-                className="m-4 bg-main text-white p-4 text-sm rounded-sm"
-            >
-                back to Home
+            <Link to="/">
+                <Button text="Back To Home" type="main" />
             </Link>
         </div>
     )
