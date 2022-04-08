@@ -6,7 +6,7 @@ const Button = ({ text, type }) => {
         <button
             className={cn(
                 `m-4  p-4 text-sm rounded-lg text-white`,
-                type == 'main' ? 'bg-main' : 'bg-black '
+                type === 'main' ? 'bg-main' : 'bg-black '
             )}
         >
             {text}
