@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 import Customers from './components/customers'
+import { Routes, Route, Link } from 'react-router-dom'
 
 import './App.css'
 
@@ -31,10 +32,32 @@ function App() {
     // The Returned Doms
     return (
         <div className="App">
-            <h1>Test From App.js</h1>
-            <Customers data={data ? data.customers.data : []} />
+            <h1>Welcome From The Appjs File</h1>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                    path="/customers"
+                    element={
+                        <Customers data={data ? data.customers.data : []} />
+                    }
+                />
+            </Routes>
         </div>
     )
 }
 
 export default App
+
+const Home = () => {
+    return (
+        <div>
+            <h1>Hello This is Home Component</h1>
+            <Link
+                to="/customers"
+                className="m-4 bg-black text-white p-4 text-sm"
+            >
+                Click To Go To Customers Page
+            </Link>
+        </div>
+    )
+}
