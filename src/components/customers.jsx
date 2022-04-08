@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Customers({ data }) {
     return (
@@ -12,6 +13,9 @@ function Customers({ data }) {
                           )
                       })}
             </ul>
+            <Link to="/" className="m-4 bg-main text-white p-4 text-sm">
+                Home
+            </Link>
         </div>
     )
 }
