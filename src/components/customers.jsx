@@ -13,8 +13,11 @@ function Customers({ data }) {
                           )
                       })}
             </ul>
-            <Link to="/" className="m-4 bg-main text-white p-4 text-sm">
-                Home
+            <Link
+                to="/"
+                className="m-4 bg-main text-white p-4 text-sm rounded-sm"
+            >
+                back to Home
             </Link>
         </div>
     )
@@ -26,10 +29,10 @@ const SigleCustomer = ({ id, attributes }) => {
     return (
         <li
             key={id}
-            className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-4"
+            className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-2"
         >
-            <p className="inline-block text-2xl">{attributes.name}</p>
-            <p className="flex items-center text-2xl">{attributes.debt}</p>
+            <p className="inline-block text-lg">{attributes.name}</p>
+            <p className="flex items-center text-lg">{attributes.debt}</p>
         </li>
     )
 }

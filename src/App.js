@@ -32,7 +32,9 @@ function App() {
     // The Returned Doms
     return (
         <div className="App">
-            <h1>Welcome From The Appjs File</h1>
+            <h1 className="text-2xl text-main block border-b-2">
+                Welcome From The Appjs File
+            </h1>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
@@ -51,10 +53,10 @@ export default App
 const Home = () => {
     return (
         <div>
-            <h1>Hello This is Home Component</h1>
+            <p className="text-lg">Hello This is Home Component</p>
             <Link
                 to="/customers"
-                className="m-4 bg-black text-white p-4 text-sm"
+                className="m-4 bg-black text-white p-4 text-sm rounded-sm"
             >
                 Click To Go To Customers Page
             </Link>
