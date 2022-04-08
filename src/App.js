@@ -3,6 +3,7 @@ import { useQuery, gql } from '@apollo/client'
 import Customers from './components/customers'
 import { Routes, Route, Link } from 'react-router-dom'
 import Button from './components/Button'
+import CustomerInfo from './components/CustomerInfo'
 
 import './App.css'
 
@@ -44,6 +45,7 @@ function App() {
                         <Customers data={data ? data.customers.data : []} />
                     }
                 />
+                <Route path="/customers/:id" element={<CustomerInfo />} />
             </Routes>
         </div>
     )

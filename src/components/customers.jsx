@@ -10,7 +10,11 @@ function Customers({ data }) {
                     ? 'Lol'
                     : data.map(({ id, attributes }) => {
                           return (
-                              <SigleCustomer key={id} attributes={attributes} />
+                              <SigleCustomer
+                                  key={id}
+                                  id={id}
+                                  attributes={attributes}
+                              />
                           )
                       })}
             </ul>
@@ -23,11 +27,13 @@ function Customers({ data }) {
 
 export default Customers
 
-const SigleCustomer = ({ attributes }) => {
+const SigleCustomer = ({ id, attributes }) => {
     return (
-        <li className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-2">
-            <p className="inline-block text-lg">{attributes.name}</p>
-            <p className="flex items-center text-lg">{attributes.debt}</p>
-        </li>
+        <Link to={id}>
+            <li className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-2">
+                <p className="inline-block text-lg">{attributes.name}</p>
+                <p className="flex items-center text-lg">{attributes.debt}</p>
+            </li>
+        </Link>
     )
 }
