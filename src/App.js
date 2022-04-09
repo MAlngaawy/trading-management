@@ -4,6 +4,7 @@ import Customers from './components/customers'
 import { Routes, Route, Link } from 'react-router-dom'
 import Button from './components/Button'
 import CustomerInfo from './components/CustomerInfo'
+import AddCustomer from './components/AddCustomer'
 
 import './App.css'
 
@@ -46,6 +47,7 @@ function App() {
                     }
                 />
                 <Route path="/customers/:id" element={<CustomerInfo />} />
+                <Route path="/add-customer" element={<AddCustomer />} />
             </Routes>
         </div>
     )

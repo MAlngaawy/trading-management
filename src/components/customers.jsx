@@ -17,6 +17,12 @@ function Customers({ data }) {
                               />
                           )
                       })}
+                <Link to="/add-customer">
+                    <Button
+                        text="+ add Customer"
+                        className="bg-red-500 w-full mx-0 font-bold"
+                    />
+                </Link>
             </ul>
             <Link to="/">
                 <Button text="Back To Home" type="main" />
