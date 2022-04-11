@@ -11,6 +11,11 @@ const AddCustomer = () => {
         address: '',
     })
 
+    const [message, setMessage] = useState({
+        show: false,
+        messageText: 'Customer Added',
+    })
+
     const handleChangeName = (e) => {
         setvalues({
             ...values,
@@ -39,23 +44,21 @@ const AddCustomer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:1337/api/customers', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                data: values,
-            }),
-        }).then((res) =>
-            setvalues({ name: '', debt: '', phone: '', address: '' })
-        )
+        // fetch('http://localhost:1337/api/customers', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({
+        //         data: values,
+        //     }),
+        // }).then((res) =>
+        //     setvalues({ name: '', debt: '', phone: '', address: '' })
+        // )
+        setMessage({ ...message, show: true })
+        console.log(message)
     }
 
     return (
         <div className="addCustomer text-lg">
-            {/* <p>
-                This is the input value
-                <span className="text-main mx-10">{values.toString()}</span>
-            </p> */}
             <form onSubmit={handleSubmit}>
                 <Inputs
                     labelName="name"
@@ -88,6 +91,25 @@ const AddCustomer = () => {
                     value="SUBMIT"
                 />
             </form>
+
+            {message.show ? (
+                <div
+                    // onClick={setMessage({ ...message, show: false })}
+                    className="m-0 message absolute top-0 left-0 bottom-0 right-0 bg-black  h-full w-full"
+                >
+                    {message.messageText}
+                    <span
+                        onClick={() => {
+                            setMessage({ ...message, show: false })
+                        }}
+                        className="text-lg"
+                    >
+                        CLOSE
+                    </span>
+                </div>
+            ) : (
+                ''
+            )}
         </div>
     )
 }
