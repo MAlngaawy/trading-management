@@ -11,7 +11,7 @@ const clientMe = new ApolloClient({
 })
 
 ReactDOM.render(
-    <BrowserRouter>
+    <BrowserRouter forceRefresh={true}>
         <ApolloProvider client={clientMe}>
             <React.StrictMode>
                 <App />

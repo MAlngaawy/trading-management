@@ -1,14 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from './Button'
+import { useQuery, gql } from '@apollo/client'
 
-function Customers({ data }) {
+const CUSTOMERS = gql`
+    query getCustomers {
+        customers {
+            data {
+                id
+                attributes {
+                    name
+                    debt
+                }
+            }
+        }
+    }
+`
+
+function Customers() {
+    const { loading, error, data } = useQuery(CUSTOMERS)
+    useEffect(() => {
+        console.log('Effect From Customers')
+    }, [data])
+
+    if (loading) return <p>Loading ....</p>
+    if (error) return <p>error ....</p>
+
+    if (data) {
+        console.log(data.customers.data)
+    }
+
+    console.log('Done from Customers')
     return (
         <div>
             <ul>
-                {data.length === 0
+                {data.customers.data.length === 0
                     ? 'Lol'
-                    : data.map(({ id, attributes }) => {
+                    : data.customers.data.map(({ id, attributes }) => {
                           return (
                               <SigleCustomer
                                   key={id}

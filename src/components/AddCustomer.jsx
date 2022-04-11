@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // DOES GRAPHQL JUST GET DATA NOT POST DATA !!!!!
@@ -15,6 +15,10 @@ const AddCustomer = () => {
         show: false,
         messageText: 'Customer Added',
     })
+
+    // useEffect(() => {
+    //     console.log(message)
+    // }, [message])
 
     const handleChangeName = (e) => {
         setvalues({
@@ -44,17 +48,19 @@ const AddCustomer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // fetch('http://localhost:1337/api/customers', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({
-        //         data: values,
-        //     }),
-        // }).then((res) =>
-        //     setvalues({ name: '', debt: '', phone: '', address: '' })
-        // )
-        setMessage({ ...message, show: true })
-        console.log(message)
+        fetch('http://localhost:1337/api/customers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                data: values,
+            }),
+        })
+            .then((res) =>
+                setvalues({ name: '', debt: '', phone: '', address: '' })
+            )
+            .then(() => {
+                setMessage({ ...message, show: true })
+            })
     }
 
     return (
@@ -93,18 +99,15 @@ const AddCustomer = () => {
             </form>
 
             {message.show ? (
-                <div
-                    // onClick={setMessage({ ...message, show: false })}
-                    className="m-0 message absolute top-0 left-0 bottom-0 right-0 bg-black  h-full w-full"
-                >
+                <div className="m-0 message text-white text-center absolute top-0 left-0 bottom-0 right-0 bg-black  h-full w-full">
                     {message.messageText}
                     <span
                         onClick={() => {
                             setMessage({ ...message, show: false })
                         }}
-                        className="text-lg"
+                        className="text-lg text-white"
                     >
-                        CLOSE
+                        <Link to="/customers">CLOSE</Link>
                     </span>
                 </div>
             ) : (
