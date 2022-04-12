@@ -29,8 +29,6 @@ function Customers() {
     if (data) {
         console.log(data.customers.data)
     }
-
-    console.log('Done from Customers')
     return (
         <div>
             <ul>
