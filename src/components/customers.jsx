@@ -33,6 +33,9 @@ function Customers() {
     }
     return (
         <div>
+            <Link to="/">
+                <Button text="Back To Home" type="main" />
+            </Link>
             <ul>
                 {data.customers.data.length === 0
                     ? 'Lol'
@@ -52,9 +55,6 @@ function Customers() {
                     />
                 </Link>
             </ul>
-            <Link to="/">
-                <Button text="Back To Home" type="main" />
-            </Link>
         </div>
     )
 }
