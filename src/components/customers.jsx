@@ -11,6 +11,8 @@ const CUSTOMERS = gql`
                 attributes {
                     name
                     debt
+                    phone
+                    address
                 }
             }
         }
@@ -60,12 +62,31 @@ function Customers() {
 export default Customers
 
 const SigleCustomer = ({ id, attributes }) => {
+    const deleteCustomer = (id) => {
+        console.log('Test')
+        fetch(`http://localhost:1337/api/customers/${id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        }).then((res) => console.log(res.json()))
+    }
+
     return (
-        <Link to={id}>
-            <li className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-2">
-                <p className="inline-block text-lg">{attributes.name}</p>
-                <p className="flex items-center text-lg">{attributes.debt}</p>
-            </li>
-        </Link>
+        <div>
+            <Link to={id}>
+                <li className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-2">
+                    <p className="inline-block text-lg">{attributes.name}</p>
+                    <p className="flex items-center text-lg">
+                        {attributes.debt}
+                    </p>
+                </li>
+            </Link>
+            <Button
+                onClickFun={() => {
+                    deleteCustomer(id)
+                }}
+                text="delete"
+                className="bg-red-700 text-white p-2 "
+            />
+        </div>
     )
 }
