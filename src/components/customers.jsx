@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from './Button'
 import { useQuery, gql } from '@apollo/client'
+import API from '../API'
 
 const CUSTOMERS = gql`
     query getCustomers {
@@ -64,7 +65,7 @@ export default Customers
 const SigleCustomer = ({ id, attributes }) => {
     const deleteCustomer = (id) => {
         console.log('Test')
-        fetch(`http://localhost:1337/api/customers/${id}`, {
+        fetch(`${API}/api/customers/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         }).then((res) => console.log(res.json()))

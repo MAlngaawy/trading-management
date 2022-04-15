@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import API from '../API'
 
 // DOES GRAPHQL JUST GET DATA NOT POST DATA !!!!!
 
@@ -48,7 +49,7 @@ const AddCustomer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:1337/api/customers', {
+        fetch(`${API}/api/customers`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
