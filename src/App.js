@@ -6,6 +6,7 @@ import Button from './components/Button'
 import CustomerInfo from './components/CustomerInfo'
 import AddCustomer from './components/AddCustomer'
 import HomePage from './components/HomePage'
+import Navbar from './components/Navbar'
 
 import './App.css'
 
@@ -13,9 +14,11 @@ function App() {
     // The Returned Doms
     return (
         <div className="App">
-            <h1 className="text-2xl text-main block border-b-2">
+            {/* <h1 className="text-2xl text-main block border-b-2">
                 Welcome From The Appjs File
-            </h1>
+            </h1> */}
+            <Navbar />
+
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/customers" element={<Customers />} />
