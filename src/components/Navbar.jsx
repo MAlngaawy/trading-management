@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../Trade.svg'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     return (
@@ -9,9 +10,15 @@ const Navbar = () => {
                     <img src={logo} alt="Test" />
                 </div>
                 <ul className="links flex items-center">
-                    <li className="mx-4">Home</li>
-                    <li className="mx-4">Customers</li>
-                    <li className="mx-4">+ Add Customer</li>
+                    <li className="mx-4">
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className="mx-4">
+                        <Link to="/customers">Customers</Link>
+                    </li>
+                    <li className="mx-4">
+                        <Link to="add-customer">+ Add Customer</Link>
+                    </li>
                 </ul>
             </div>
         </nav>
