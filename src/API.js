@@ -1,4 +1,4 @@
 const localAPI = 'http://localhost:1337'
-const onlineAPI = 'Not Found'
+const onlineAPI = 'https://mo-trading-backend.herokuapp.com'
 
-export default localAPI
+export default onlineAPI
