@@ -4,6 +4,8 @@ import Button from './Button'
 import { useQuery, gql } from '@apollo/client'
 import API from '../API'
 
+console.log(API)
+
 // const CUSTOMERS = gql`
 //     query getCustomers {
 //         customers {

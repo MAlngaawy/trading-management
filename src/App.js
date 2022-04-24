@@ -10,8 +10,6 @@ import Navbar from './components/Navbar'
 
 import './App.css'
 
-console.log(process.env.NODE_ENV)
-
 function App() {
     // The Returned Doms
     return (
