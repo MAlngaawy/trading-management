@@ -4,6 +4,7 @@ import cn from 'classnames'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+    console.log('Test Here')
     const [showNav, setShowNav] = useState(false)
     return (
         <nav className="navbar p-5 bg-white">
@@ -46,15 +47,21 @@ const Navbar = () => {
                     >
                         Close Nav
                     </span>
-                    <li className="m-4">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="m-4">
-                        <Link to="/customers">Customers</Link>
-                    </li>
-                    <li className="m-4">
-                        <Link to="add-customer">+ Add Customer</Link>
-                    </li>
+                    <Item
+                        name="Home"
+                        link="/"
+                        setShowNav={() => setShowNav()}
+                    />
+                    <Item
+                        name="Customers"
+                        link="/customers"
+                        setShowNav={() => setShowNav()}
+                    />
+                    <Item
+                        name="+ Add Customers"
+                        link="add-customer"
+                        setShowNav={() => setShowNav()}
+                    />
                 </ul>
             </div>
         </nav>
@@ -62,3 +69,11 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+const Item = ({ name, link, setShowNav }) => {
+    return (
+        <li onClick={() => setShowNav(false)} className="m-4">
+            <Link to={link}>{name}</Link>
+        </li>
+    )
+}
