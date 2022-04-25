@@ -4,7 +4,7 @@ import Button from './Button'
 
 const HomePage = () => {
     return (
-        <div className="home bg-main p-28">
+        <div className="home bg-main py-28 ">
             <div className="container">
                 <h2 className=" text-6xl leading-normal ">
                     The way to manage your <br />{' '}
@@ -13,7 +13,7 @@ const HomePage = () => {
                 <Link to="/customers">
                     <Button
                         type="main"
-                        className="font-bold px-10 mt-10 transform hover:scale-105 transition-all"
+                        className="font-semibold text-2xl px-14 my-10 transform hover:scale-105 transition-all"
                         text="Try the app now"
                     />
                 </Link>
