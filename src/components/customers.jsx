@@ -39,7 +39,7 @@ function Customers() {
     //     console.log(data.customers.data)
     // }
     return (
-        <div>
+        <div className="container">
             <Link to="/">
                 <Button text="Back To Home" type="main" />
             </Link>

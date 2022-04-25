@@ -65,7 +65,7 @@ const AddCustomer = () => {
     }
 
     return (
-        <div className="addCustomer text-lg">
+        <div className="addCustomer text-lg container">
             <form onSubmit={handleSubmit}>
                 <Inputs
                     labelName="name"
@@ -128,7 +128,7 @@ const Inputs = ({ labelName, handleFunction, value, type }) => {
                 type={type}
                 value={value}
                 onChange={handleFunction}
-                className="border-2 block"
+                className="border-2 block max-w-full"
             />
         </label>
     )
