@@ -13,7 +13,7 @@ import './App.css'
 function App() {
     // The Returned Doms
     return (
-        <div className="App">
+        <div className="App bg-main">
             {/* <h1 className="text-2xl text-main block border-b-2">
                 Welcome From The Appjs File
             </h1> */}

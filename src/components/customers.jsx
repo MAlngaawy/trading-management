@@ -39,12 +39,13 @@ function Customers() {
     //     console.log(data.customers.data)
     // }
     return (
-        <div className="container">
-            <Link to="/">
-                <Button text="Back To Home" type="main" />
-            </Link>
-            <ul>
-                {/* {fatchedDa.customers.data.length === 0
+        <div className="customers bg-white">
+            <div className="container">
+                <Link to="/">
+                    <Button text="Back To Home" type="main" />
+                </Link>
+                <ul>
+                    {/* {fatchedDa.customers.data.length === 0
                     ? 'Lol'
                     : data.customers.data.map(({ id, attributes }) => {
                           return (
@@ -55,22 +56,23 @@ function Customers() {
                               />
                           )
                       })} */}
-                {fetchedData.map(({ id, attributes }) => {
-                    return (
-                        <SigleCustomer
-                            key={id}
-                            id={id}
-                            attributes={attributes}
+                    {fetchedData.map(({ id, attributes }) => {
+                        return (
+                            <SigleCustomer
+                                key={id}
+                                id={id}
+                                attributes={attributes}
+                            />
+                        )
+                    })}
+                    <Link to="/add-customer">
+                        <Button
+                            text="+ add Customer"
+                            className="bg-red-500 w-full mx-0 font-bold"
                         />
-                    )
-                })}
-                <Link to="/add-customer">
-                    <Button
-                        text="+ add Customer"
-                        className="bg-red-500 w-full mx-0 font-bold"
-                    />
-                </Link>
-            </ul>
+                    </Link>
+                </ul>
+            </div>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import Button from './Button'
 
 const HomePage = () => {
     return (
-        <div className="home bg-main py-28 ">
+        <div className="home py-28">
             <div className="container">
                 <h2 className=" text-4xl leading-normal md:text-6xl md:leading-normal">
                     The way to manage your <br />{' '}

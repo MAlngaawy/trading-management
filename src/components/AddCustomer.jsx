@@ -65,55 +65,57 @@ const AddCustomer = () => {
     }
 
     return (
-        <div className="addCustomer text-lg container">
-            <form onSubmit={handleSubmit}>
-                <Inputs
-                    labelName="name"
-                    handleFunction={handleChangeName}
-                    value={values.name}
-                    type="text"
-                />
-                <Inputs
-                    labelName="debt"
-                    handleFunction={handleChangedebt}
-                    value={values.debt}
-                    type="number"
-                />
-                <Inputs
-                    labelName="phone"
-                    handleFunction={handleChangephone}
-                    value={values.phone}
-                    type="number"
-                />
-                <Inputs
-                    labelName="address"
-                    handleFunction={handleChangeaddress}
-                    value={values.address}
-                    type="text"
-                />
-                <input
-                    className="bg-main cursor-pointer text-white p-2 m-2"
-                    type="submit"
-                    name="submit"
-                    value="SUBMIT"
-                />
-            </form>
+        <div className="addCustomer bg-white">
+            <div className=" text-lg container">
+                <form onSubmit={handleSubmit}>
+                    <Inputs
+                        labelName="name"
+                        handleFunction={handleChangeName}
+                        value={values.name}
+                        type="text"
+                    />
+                    <Inputs
+                        labelName="debt"
+                        handleFunction={handleChangedebt}
+                        value={values.debt}
+                        type="number"
+                    />
+                    <Inputs
+                        labelName="phone"
+                        handleFunction={handleChangephone}
+                        value={values.phone}
+                        type="number"
+                    />
+                    <Inputs
+                        labelName="address"
+                        handleFunction={handleChangeaddress}
+                        value={values.address}
+                        type="text"
+                    />
+                    <input
+                        className="bg-main cursor-pointer text-white p-2 m-2"
+                        type="submit"
+                        name="submit"
+                        value="SUBMIT"
+                    />
+                </form>
 
-            {message.show ? (
-                <div className="m-0 message text-white text-center absolute top-0 left-0 bottom-0 right-0 bg-black  h-full w-full">
-                    {message.messageText}
-                    <span
-                        onClick={() => {
-                            setMessage({ ...message, show: false })
-                        }}
-                        className="text-lg text-white"
-                    >
-                        <Link to="/customers">CLOSE</Link>
-                    </span>
-                </div>
-            ) : (
-                ''
-            )}
+                {message.show ? (
+                    <div className="m-0 message text-white text-center absolute top-0 left-0 bottom-0 right-0 bg-black  h-full w-full">
+                        {message.messageText}
+                        <span
+                            onClick={() => {
+                                setMessage({ ...message, show: false })
+                            }}
+                            className="text-lg text-white"
+                        >
+                            <Link to="/customers">CLOSE</Link>
+                        </span>
+                    </div>
+                ) : (
+                    ''
+                )}
+            </div>
         </div>
     )
 }
