@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import logo from '../Trade.svg'
 import cn from 'classnames'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
     console.log('Test Here')
@@ -16,7 +19,8 @@ const Navbar = () => {
                     className="menu sm:hidden flex items-center"
                     onClick={() => setShowNav(true)}
                 >
-                    Menu
+                    {/* <FontAwesomeIcon icon={faCoffee} /> */}
+                    <FontAwesomeIcon icon={faBars} />
                 </div>
                 <ul
                     className={cn(
@@ -45,7 +49,7 @@ const Navbar = () => {
                         onClick={() => setShowNav(false)}
                         className=" absolute top-4 right-4 sm:hidden"
                     >
-                        Close Nav
+                        <FontAwesomeIcon icon={faXmark} />
                     </span>
                     <Item
                         name="Home"
