@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Button from './Button'
 import { useQuery, gql } from '@apollo/client'
 import API from '../API'
+import Table from './Table'
 
 console.log(API)
 
@@ -41,6 +42,7 @@ function Customers() {
     return (
         <div className="customers bg-white">
             <div className="container">
+                <Table />
                 <Link to="/">
                     <Button text="Back To Home" type="main" />
                 </Link>
