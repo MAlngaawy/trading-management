@@ -42,7 +42,11 @@ function Customers() {
     return (
         <div className="customers bg-white">
             <div className="container">
-                <Table />
+                {fetchedData.length > 0 ? (
+                    <Table fetchedData={fetchedData} />
+                ) : (
+                    'Lol'
+                )}
                 <Link to="/">
                     <Button text="Back To Home" type="main" />
                 </Link>
