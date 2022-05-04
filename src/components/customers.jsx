@@ -1,31 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from './Button'
-import { useQuery, gql } from '@apollo/client'
 import API from '../API'
 import Table from './Table'
 
-console.log(API)
-
-// const CUSTOMERS = gql`
-//     query getCustomers {
-//         customers {
-//             data {
-//                 id
-//                 attributes {
-//                     name
-//                     debt
-//                     phone
-//                     address
-//                 }
-//             }
-//         }
-//     }
-// `
-
 function Customers() {
     const [fetchedData, seFetchedData] = useState([])
-    // const { loading, error, data } = useQuery(CUSTOMERS)
     useEffect(() => {
         fetch(`${API}/api/customers`)
             .then((res) => res.json())
@@ -33,12 +13,6 @@ function Customers() {
         console.log('Effect From Customers')
     }, [])
 
-    // if (loading) return <p>Loading ....</p>
-    // if (error) return <p>error ....</p>
-
-    // if (data) {
-    //     console.log(data.customers.data)
-    // }
     return (
         <div className="customers bg-white">
             <div className="container">
@@ -51,17 +25,6 @@ function Customers() {
                     <Button text="Back To Home" type="main" />
                 </Link>
                 <ul>
-                    {/* {fatchedDa.customers.data.length === 0
-                    ? 'Lol'
-                    : data.customers.data.map(({ id, attributes }) => {
-                          return (
-                              <SigleCustomer
-                                  key={id}
-                                  id={id}
-                                  attributes={attributes}
-                              />
-                          )
-                      })} */}
                     {fetchedData.map(({ id, attributes }) => {
                         return (
                             <SigleCustomer
@@ -87,7 +50,6 @@ export default Customers
 
 const SigleCustomer = ({ id, attributes }) => {
     const deleteCustomer = (id) => {
-        console.log('Test')
         fetch(`${API}/api/customers/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
