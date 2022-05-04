@@ -46,14 +46,14 @@ const Table = ({ fetchedData }) => {
 
     return (
         <div>
-            <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+            <table {...getTableProps()} className="w-full font-inter">
                 <thead>
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
                                 <th
                                     {...column.getHeaderProps()}
-                                    className="bg-main text-black border-2 border-black"
+                                    className="bg-mainGray text-secondGray text-left pl-8 py-4 font-normal "
                                 >
                                     {column.render('Header')}
                                 </th>
@@ -67,13 +67,13 @@ const Table = ({ fetchedData }) => {
                         return (
                             <tr
                                 {...row.getRowProps()}
-                                className=" bg-black text-white border-2 border-black hover:bg-slate-500"
+                                className="border-b hover:bg-mainGray"
                             >
                                 {row.cells.map((cell) => {
                                     return (
                                         <td
                                             {...cell.getCellProps()}
-                                            className="pr-14 pl-4 py-2"
+                                            className="py-4 pl-8"
                                         >
                                             {cell.render('Cell')}
                                         </td>
