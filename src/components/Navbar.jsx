@@ -13,7 +13,7 @@ const Navbar = () => {
         <nav className="navbar p-5 bg-white">
             <div className="container flex justify-between">
                 <div className="logo">
-                    <img src={logo} alt="Test" />
+                    <img src={logo} className="h-6 w-28" alt="Test" />
                 </div>
                 <div
                     className="menu sm:hidden flex items-center"
