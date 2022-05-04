@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import API from '../API'
+import Button from './Button'
 
 // DOES GRAPHQL JUST GET DATA NOT POST DATA !!!!!
 
@@ -55,13 +56,21 @@ const AddCustomer = () => {
             body: JSON.stringify({
                 data: values,
             }),
-        })
-            .then((res) =>
+        }).then((res) => {
+            console.log(res.status)
+            if (res.status === 400) {
+                setMessage({
+                    messageText: 'Please fill all fields',
+                    show: true,
+                })
+            } else if (res.status === 200) {
                 setvalues({ name: '', debt: '', phone: '', address: '' })
-            )
-            .then(() => {
-                setMessage({ ...message, show: true })
-            })
+                setMessage({
+                    messageText: 'Customer Added successfly',
+                    show: true,
+                })
+            }
+        })
     }
 
     return (
@@ -101,16 +110,20 @@ const AddCustomer = () => {
                 </form>
 
                 {message.show ? (
-                    <div className="m-0 message text-white text-center absolute top-0 left-0 bottom-0 right-0 bg-black  h-full w-full">
-                        {message.messageText}
-                        <span
-                            onClick={() => {
-                                setMessage({ ...message, show: false })
-                            }}
-                            className="text-lg text-white"
-                        >
-                            <Link to="/customers">CLOSE</Link>
-                        </span>
+                    <div className="warning z-50 absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50 w-full h-full">
+                        <div className="warning-content w-4/5 h-4/5 max-h-80 max-w-md bg-white flex justify-center items-center flex-col">
+                            <h2>{message.messageText}</h2>
+                            <Button
+                                text="Close"
+                                type="main"
+                                className="px-10 font-semibold mt-10"
+                                onClickFun={() => {
+                                    setMessage({ ...message, show: false })
+                                }}
+                            >
+                                <Link to="/customers"></Link>
+                            </Button>
+                        </div>
                     </div>
                 ) : (
                     ''
