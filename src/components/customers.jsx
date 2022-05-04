@@ -16,15 +16,15 @@ function Customers() {
     return (
         <div className="customers bg-white">
             <div className="container">
+                <Link to="/">
+                    <Button text="Back To Home" type="main" />
+                </Link>
                 {fetchedData.length > 0 ? (
                     <Table fetchedData={fetchedData} />
                 ) : (
                     'Lol'
                 )}
-                <Link to="/">
-                    <Button text="Back To Home" type="main" />
-                </Link>
-                <ul>
+                {/* <ul>
                     {fetchedData.map(({ id, attributes }) => {
                         return (
                             <SigleCustomer
@@ -40,7 +40,7 @@ function Customers() {
                             className="bg-red-500 w-full mx-0 font-bold"
                         />
                     </Link>
-                </ul>
+                </ul> */}
             </div>
         </div>
     )
