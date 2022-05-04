@@ -1,8 +1,11 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useTable } from 'react-table/dist/react-table.development'
 import API from '../API'
+import Button from './Button'
 
 const Table = ({ fetchedData }) => {
+    const [showWarning, setShowWorning] = useState(false)
+
     const columns = React.useMemo(
         () => [
             {
@@ -84,12 +87,26 @@ const Table = ({ fetchedData }) => {
                                 })}
                                 {/* Custom td for delete button */}
                                 <td
-                                    onClick={() => deleteFun(row.original.id)}
+                                    // onClick={() => deleteFun(row.original.id)}
+                                    onClick={() => setShowWorning(true)}
                                     className="py-4 pl-8 text-red-600 hover:bg-red-600 hover:text-white cursor-pointer"
                                 >
                                     {' '}
                                     delete{' '}
                                 </td>
+                                {showWarning ? (
+                                    <Warning
+                                        deleteIt={() => {
+                                            deleteFun(row.original.id)
+                                            console.log('Yes Delete')
+                                            setShowWorning(false)
+                                        }}
+                                        close={() => setShowWorning(false)}
+                                        name={row.original.name}
+                                    />
+                                ) : (
+                                    ''
+                                )}
                             </tr>
                         )
                     })}
@@ -100,3 +117,29 @@ const Table = ({ fetchedData }) => {
 }
 
 export default Table
+
+const Warning = ({ name, close, deleteIt }) => {
+    return (
+        <div className="warning z-50 absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50 w-full h-full">
+            <div className="warning-content w-4/5 h-4/5 max-h-80 max-w-md bg-white flex justify-center items-center flex-col">
+                <h2>are you sure you want to delete {name}</h2>
+                <div className="actions mt-10">
+                    <Button
+                        onClickFun={() => {
+                            deleteIt()
+                        }}
+                        text="Yes Delete"
+                        className="bg-red-600 text-white"
+                    />
+                    <Button
+                        onClickFun={() => {
+                            close()
+                        }}
+                        text="Cansel"
+                        className="text-black p-0 m-8"
+                    />
+                </div>
+            </div>
+        </div>
+    )
+}
