@@ -1,19 +1,8 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useTable } from 'react-table/dist/react-table.development'
+import API from '../API'
 
 const Table = ({ fetchedData }) => {
-    console.log(fetchedData)
-    // const data = React.useMemo(
-    //     () => [
-    //         {
-    //             name: 'Momo',
-    //             debt: '20000',
-    //             phone: '01125963258',
-    //         },
-    //     ],
-    //     []
-    // )
-
     const columns = React.useMemo(
         () => [
             {
@@ -32,11 +21,21 @@ const Table = ({ fetchedData }) => {
         []
     )
 
+    const deleteFun = (id) => {
+        console.log(id)
+        fetch(`${API}/api/customers/${id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        }).then((res) => window.location.reload())
+    }
+
     const data = fetchedData.map((el) => {
+        console.log('EL', el.id)
         return {
             name: el.attributes.name,
             debt: el.attributes.debt,
             phone: el.attributes.phone,
+            id: el.id,
         }
     })
 
@@ -58,6 +57,10 @@ const Table = ({ fetchedData }) => {
                                     {column.render('Header')}
                                 </th>
                             ))}
+                            <th className="bg-mainGray text-secondGray text-left pl-8 py-4 font-normal ">
+                                {' '}
+                                Action{' '}
+                            </th>
                         </tr>
                     ))}
                 </thead>
@@ -79,6 +82,14 @@ const Table = ({ fetchedData }) => {
                                         </td>
                                     )
                                 })}
+                                {/* Custom td for delete button */}
+                                <td
+                                    onClick={() => deleteFun(row.original.id)}
+                                    className="py-4 pl-8 text-red-600 hover:bg-red-600 hover:text-white cursor-pointer"
+                                >
+                                    {' '}
+                                    delete{' '}
+                                </td>
                             </tr>
                         )
                     })}
