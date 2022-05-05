@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../Trade.svg'
+import logo from '../Logo.svg'
 import cn from 'classnames'
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,10 +15,10 @@ const Navbar = () => {
         <nav className="navbar p-5 bg-white">
             <div className="container flex justify-between">
                 <div className="logo">
-                    <img src={logo} className="h-6 w-28" alt="Test" />
+                    <img src={logo} className="h-full w-16" alt="Test" />
                 </div>
                 <div
-                    className="menu sm:hidden flex items-center"
+                    className="menu sm:hidden flex items-center text-secondGray"
                     onClick={() => setShowNav(true)}
                 >
                     {/* <FontAwesomeIcon icon={faCoffee} /> */}
@@ -49,7 +49,7 @@ const Navbar = () => {
                 >
                     <span
                         onClick={() => setShowNav(false)}
-                        className=" absolute top-4 right-4 sm:hidden"
+                        className=" absolute top-2 right-8 border border-mainGray px-3 py-1 sm:hidden text-secondGray"
                     >
                         <FontAwesomeIcon icon={faXmark} />
                     </span>
@@ -83,7 +83,9 @@ const Item = ({ name, link, setShowNav, location }) => {
     return (
         <li
             onClick={() => setShowNav(false)}
-            className={cn('m-4', { 'font-bold': location === link })}
+            className={cn('m-4 text-secondGray', {
+                'font-bold': location === link,
+            })}
         >
             <Link to={link}>{name}</Link>
         </li>
