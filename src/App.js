@@ -1,8 +1,6 @@
 import React from 'react'
-
 import Customers from './components/customers'
 import { Routes, Route, Link } from 'react-router-dom'
-import Button from './components/Button'
 import CustomerInfo from './components/CustomerInfo'
 import AddCustomer from './components/AddCustomer'
 import HomePage from './components/HomePage'

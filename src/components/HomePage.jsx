@@ -13,8 +13,8 @@ const HomePage = () => {
                 <Link to="/customers">
                     <Button
                         type="main"
-                        className="font-semibold text-2xl px-14 my-10 transform hover:scale-105 transition-all"
-                        text="Try the app now"
+                        className="font-semibold text-2xl px-10 my-10 transform hover:scale-105 transition-all"
+                        text="Go To the customers"
                     />
                 </Link>
             </div>

@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import logo from '../Trade.svg'
 import cn from 'classnames'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
-    console.log('Test Here')
+    // Access the pathname
+    const location = useLocation().pathname
+
     const [showNav, setShowNav] = useState(false)
     return (
         <nav className="navbar p-5 bg-white">
@@ -55,16 +57,19 @@ const Navbar = () => {
                         name="Home"
                         link="/"
                         setShowNav={() => setShowNav()}
+                        location={location}
                     />
                     <Item
                         name="Customers"
                         link="/customers"
                         setShowNav={() => setShowNav()}
+                        location={location}
                     />
                     <Item
                         name="+ Add Customers"
-                        link="add-customer"
+                        link="/add-customer"
                         setShowNav={() => setShowNav()}
+                        location={location}
                     />
                 </ul>
             </div>
@@ -74,9 +79,12 @@ const Navbar = () => {
 
 export default Navbar
 
-const Item = ({ name, link, setShowNav }) => {
+const Item = ({ name, link, setShowNav, location }) => {
     return (
-        <li onClick={() => setShowNav(false)} className="m-4">
+        <li
+            onClick={() => setShowNav(false)}
+            className={cn('m-4', { 'font-bold': location === link })}
+        >
             <Link to={link}>{name}</Link>
         </li>
     )
