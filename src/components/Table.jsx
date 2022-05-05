@@ -25,7 +25,6 @@ const Table = ({ fetchedData }) => {
     )
 
     const deleteFun = (id) => {
-        console.log(id)
         fetch(`${API}/api/customers/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
@@ -33,7 +32,6 @@ const Table = ({ fetchedData }) => {
     }
 
     const data = fetchedData.map((el) => {
-        console.log('EL', el.id)
         return {
             name: el.attributes.name,
             debt: el.attributes.debt,
@@ -98,7 +96,6 @@ const Table = ({ fetchedData }) => {
                                     <Warning
                                         deleteIt={() => {
                                             deleteFun(row.original.id)
-                                            console.log('Yes Delete')
                                             setShowWorning(false)
                                         }}
                                         close={() => setShowWorning(false)}

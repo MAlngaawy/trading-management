@@ -57,7 +57,6 @@ const AddCustomer = () => {
                 data: values,
             }),
         }).then((res) => {
-            console.log(res.status)
             if (res.status === 400) {
                 setMessage({
                     messageText: 'Please fill all fields',

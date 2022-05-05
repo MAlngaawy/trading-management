@@ -10,15 +10,11 @@ function Customers() {
         fetch(`${API}/api/customers`)
             .then((res) => res.json())
             .then((data) => seFetchedData(data.data))
-        console.log('Effect From Customers')
     }, [])
 
     return (
-        <div className="customers bg-white">
+        <div className="customers bg-white pt-8 sm:pt-20">
             <div className="container">
-                <Link to="/">
-                    <Button text="Back To Home" type="main" />
-                </Link>
                 {fetchedData.length > 0 ? (
                     <Table fetchedData={fetchedData} />
                 ) : (
@@ -53,7 +49,7 @@ const SigleCustomer = ({ id, attributes }) => {
         fetch(`${API}/api/customers/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
-        }).then((res) => console.log(res.json()))
+        })
     }
 
     return (

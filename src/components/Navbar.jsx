@@ -12,11 +12,13 @@ const Navbar = () => {
 
     const [showNav, setShowNav] = useState(false)
     return (
-        <nav className="navbar p-5 bg-white">
+        <nav className="navbar p-5 bg-white shadow-md relative z-10">
             <div className="container flex justify-between">
-                <div className="logo">
-                    <img src={logo} className="h-full w-16" alt="Test" />
-                </div>
+                <Link to="/">
+                    <div className="logo">
+                        <img src={logo} className="h-full w-16" alt="Test" />
+                    </div>
+                </Link>
                 <div
                     className="menu sm:hidden flex items-center text-secondGray"
                     onClick={() => setShowNav(true)}
