@@ -1,7 +1,7 @@
-### This is a trading management created with react and redux 
+### This is a trading management created with react.js
 
-#### Projuct Features
-- using redux
-- SEO friendly
+##### features
+- you can add customers
+- and delete them
 
 .... to be continued
