@@ -6,6 +6,7 @@ import Table from './Table'
 
 function Customers() {
     const [fetchedData, seFetchedData] = useState([])
+
     useEffect(() => {
         fetch(`${API}/api/customers`)
             .then((res) => res.json())

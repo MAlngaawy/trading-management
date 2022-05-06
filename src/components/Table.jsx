@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useTable } from 'react-table/dist/react-table.development'
 import API from '../API'
 import Button from './Button'
-
 import Popup from './global/Popup'
+import CustomerInfo from './CustomerInfo'
 
 const Table = ({ fetchedData }) => {
     const [showWarning, setShowWorning] = useState(false)
-
+    const [singleCustomer, setSingleCustomer] = useState(0)
     const columns = React.useMemo(
         () => [
             {
@@ -48,6 +48,12 @@ const Table = ({ fetchedData }) => {
 
     return (
         <div>
+            {singleCustomer && (
+                <CustomerInfo
+                    theID={singleCustomer}
+                    closePopup={() => setSingleCustomer(0)}
+                />
+            )}
             <table {...getTableProps()} className="w-full font-inter">
                 <thead>
                     {headerGroups.map((headerGroup) => (
@@ -71,6 +77,9 @@ const Table = ({ fetchedData }) => {
                         prepareRow(row)
                         return (
                             <tr
+                                onClick={() =>
+                                    setSingleCustomer(row.original.id)
+                                }
                                 {...row.getRowProps()}
                                 className="border-b hover:bg-mainGray"
                             >

@@ -1,34 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useQuery, gql } from '@apollo/client'
+import Popup from './global/Popup'
 
-const SINGLECUSTOMER = gql`
-    query getCustomers($id: ID!) {
-        customer(id: $id) {
-            data {
-                id
-                attributes {
-                    name
-                    debt
-                }
-            }
-        }
-    }
-`
-
-const CustomerInfo = () => {
-    const { id } = useParams()
-
-    const { loading, error, data } = useQuery(SINGLECUSTOMER, {
-        variables: { id },
-    })
-    console.log(error, loading, data)
-
-    if (loading) return <p>Loading ....</p>
-    if (error) return <p>error ....</p>
-
+const CustomerInfo = ({ closePopup, theID }) => {
     return (
-        <div>This is Customer Name is {data.customer.data.attributes.name}</div>
+        <div className="info">
+            <Popup>
+                {' '}
+                <h2 onClick={() => closePopup()}>
+                    Click Here To Close {theID}{' '}
+                </h2>{' '}
+            </Popup>
+        </div>
     )
 }
 
