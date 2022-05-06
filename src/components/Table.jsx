@@ -81,7 +81,7 @@ const Table = ({ fetchedData }) => {
                                     setSingleCustomer(row.original.id)
                                 }
                                 {...row.getRowProps()}
-                                className="border-b hover:bg-mainGray"
+                                className="cursor-pointer border-b hover:bg-mainGray"
                             >
                                 {row.cells.map((cell) => {
                                     return (

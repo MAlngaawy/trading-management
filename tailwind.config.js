@@ -11,6 +11,15 @@ module.exports = {
             fontFamily: {
                 inter: ['Inter', 'sans-serif'],
             },
+            keyframes: {
+                showUp: {
+                    '0%': { transform: 'scale(.5)' },
+                    '100%': { transform: 'scale(1)' },
+                },
+            },
+            animation: {
+                showUp: 'showUp .2s ease-in-out',
+            },
         },
     },
     plugins: [],
