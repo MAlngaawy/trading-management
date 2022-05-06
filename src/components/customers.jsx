@@ -15,6 +15,12 @@ function Customers() {
     return (
         <div className="customers bg-white pt-8 sm:pt-20">
             <div className="container">
+                <Link to="/add-customer">
+                    <Button
+                        text="+"
+                        className="bg-main text-xl text-secondGray px-3 py-1 font-bold"
+                    />
+                </Link>
                 {fetchedData.length > 0 ? (
                     <Table fetchedData={fetchedData} />
                 ) : (

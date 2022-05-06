@@ -28,10 +28,7 @@ const CustomerInfo = () => {
     if (error) return <p>error ....</p>
 
     return (
-        <div>
-            {' '}
-            This is Customer Name is {data.customer.data.attributes.name}{' '}
-        </div>
+        <div>This is Customer Name is {data.customer.data.attributes.name}</div>
     )
 }
 

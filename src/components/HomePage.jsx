@@ -7,7 +7,7 @@ const HomePage = () => {
         <div className="home py-28">
             <div className="container">
                 <h2 className=" text-4xl leading-normal md:text-6xl md:leading-normal">
-                    The way to manage your <br />{' '}
+                    The way to manage your <br />
                     <span className="text-white">Trading stratub</span>
                 </h2>
                 <Link to="/customers">

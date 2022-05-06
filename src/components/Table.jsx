@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { useTable } from 'react-table/dist/react-table.development'
 import API from '../API'
 import Button from './Button'
@@ -59,8 +59,7 @@ const Table = ({ fetchedData }) => {
                                 </th>
                             ))}
                             <th className="bg-mainGray text-secondGray text-left pl-8 py-4 font-normal ">
-                                {' '}
-                                Action{' '}
+                                Action
                             </th>
                         </tr>
                     ))}
@@ -89,8 +88,7 @@ const Table = ({ fetchedData }) => {
                                     onClick={() => setShowWorning(true)}
                                     className="py-4 pl-8 text-red-600 hover:bg-red-600 hover:text-white cursor-pointer"
                                 >
-                                    {' '}
-                                    delete{' '}
+                                    delete
                                 </td>
                                 {showWarning ? (
                                     <Warning
