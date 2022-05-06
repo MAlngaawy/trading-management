@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import API from '../API'
 import Button from './Button'
+import Popup from './global/Popup'
 
 // DOES GRAPHQL JUST GET DATA NOT POST DATA !!!!!
 
@@ -109,21 +110,21 @@ const AddCustomer = () => {
                 </form>
 
                 {message.show ? (
-                    <div className="warning z-50 absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50 w-full h-full">
-                        <div className="warning-content w-4/5 h-4/5 max-h-80 max-w-md bg-white flex justify-center items-center flex-col">
-                            <h2>{message.messageText}</h2>
-                            <Button
-                                text="Close"
-                                type="main"
-                                className="px-10 font-semibold mt-10"
-                                onClickFun={() => {
-                                    setMessage({ ...message, show: false })
-                                }}
-                            >
-                                <Link to="/customers"></Link>
-                            </Button>
-                        </div>
-                    </div>
+                    <Popup>
+                        <h2 className="text-center px-3 text-l">
+                            {message.messageText}
+                        </h2>
+                        <Button
+                            text="Close"
+                            type="main"
+                            className="px-10 font-semibold mt-10"
+                            onClickFun={() => {
+                                setMessage({ ...message, show: false })
+                            }}
+                        >
+                            <Link to="/customers"></Link>
+                        </Button>
+                    </Popup>
                 ) : (
                     ''
                 )}

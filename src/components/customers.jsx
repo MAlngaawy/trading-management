@@ -13,12 +13,12 @@ function Customers() {
     }, [])
 
     return (
-        <div className="customers bg-white pt-8 sm:pt-20">
+        <div className="customers bg-white pt-10">
             <div className="container">
-                <Link to="/add-customer">
+                <Link to="/add-customer" className="bg-main p-1">
                     <Button
                         text="+"
-                        className="bg-main text-xl text-secondGray px-3 py-1 font-bold"
+                        className="text-xl text-secondGray p-0 font-bold"
                     />
                 </Link>
                 {fetchedData.length > 0 ? (
@@ -50,31 +50,31 @@ function Customers() {
 
 export default Customers
 
-const SigleCustomer = ({ id, attributes }) => {
-    const deleteCustomer = (id) => {
-        fetch(`${API}/api/customers/${id}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-        })
-    }
+// const SigleCustomer = ({ id, attributes }) => {
+//     const deleteCustomer = (id) => {
+//         fetch(`${API}/api/customers/${id}`, {
+//             method: 'DELETE',
+//             headers: { 'Content-Type': 'application/json' },
+//         })
+//     }
 
-    return (
-        <div>
-            <Link to={id}>
-                <li className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-2">
-                    <p className="inline-block text-lg">{attributes.name}</p>
-                    <p className="flex items-center text-lg">
-                        {attributes.debt}
-                    </p>
-                </li>
-            </Link>
-            <Button
-                onClickFun={() => {
-                    deleteCustomer(id)
-                }}
-                text="delete"
-                className="bg-red-700 text-white p-2 "
-            />
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <Link to={id}>
+//                 <li className="my-4 hover:bg-gray-400 hover:text-white flex justify-around align-middle text-sm border-2 p-2">
+//                     <p className="inline-block text-lg">{attributes.name}</p>
+//                     <p className="flex items-center text-lg">
+//                         {attributes.debt}
+//                     </p>
+//                 </li>
+//             </Link>
+//             <Button
+//                 onClickFun={() => {
+//                     deleteCustomer(id)
+//                 }}
+//                 text="delete"
+//                 className="bg-red-700 text-white p-2 "
+//             />
+//         </div>
+//     )
+// }
