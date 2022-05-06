@@ -48,7 +48,7 @@ const Table = ({ fetchedData }) => {
 
     return (
         <div>
-            {singleCustomer && (
+            {singleCustomer > 0 && (
                 <CustomerInfo
                     theID={singleCustomer}
                     closePopup={() => setSingleCustomer(0)}
