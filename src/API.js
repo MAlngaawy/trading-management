@@ -1,4 +1,4 @@
-const localAPI = 'http://localhost:1337'
+const localAPI = 'https://mo-trading-backend.herokuapp.com'
 const onlineAPI = 'https://mo-trading-backend.herokuapp.com'
 
 const theMode = () => {

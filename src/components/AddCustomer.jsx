@@ -76,33 +76,37 @@ const AddCustomer = () => {
     return (
         <div className="addCustomer bg-white">
             <div className=" text-lg container">
-                <form onSubmit={handleSubmit}>
-                    <Inputs
-                        labelName="name"
-                        handleFunction={handleChangeName}
-                        value={values.name}
-                        type="text"
-                    />
-                    <Inputs
-                        labelName="debt"
-                        handleFunction={handleChangedebt}
-                        value={values.debt}
-                        type="number"
-                    />
-                    <Inputs
-                        labelName="phone"
-                        handleFunction={handleChangephone}
-                        value={values.phone}
-                        type="number"
-                    />
-                    <Inputs
-                        labelName="address"
-                        handleFunction={handleChangeaddress}
-                        value={values.address}
-                        type="text"
-                    />
+                <form onSubmit={handleSubmit} className="grid">
+                    <div>
+                        <Inputs
+                            labelName="name"
+                            handleFunction={handleChangeName}
+                            value={values.name}
+                            type="text"
+                        />
+                        <Inputs
+                            labelName="debt"
+                            handleFunction={handleChangedebt}
+                            value={values.debt}
+                            type="number"
+                        />
+                    </div>
+                    <div>
+                        <Inputs
+                            labelName="phone"
+                            handleFunction={handleChangephone}
+                            value={values.phone}
+                            type="number"
+                        />
+                        <Inputs
+                            labelName="address"
+                            handleFunction={handleChangeaddress}
+                            value={values.address}
+                            type="text"
+                        />
+                    </div>
                     <input
-                        className="bg-main cursor-pointer text-white p-2 m-2"
+                        className=" w-fit bg-main cursor-pointer text-white py-2 px-4 m-2"
                         type="submit"
                         name="submit"
                         value="SUBMIT"
@@ -135,16 +139,14 @@ const AddCustomer = () => {
 
 export default AddCustomer
 
-const Inputs = ({ labelName, handleFunction, value, type }) => {
+const Inputs = ({ labelName, handleFunction, value, type, customStyles }) => {
     return (
-        <label>
-            {labelName}
-            <input
-                type={type}
-                value={value}
-                onChange={handleFunction}
-                className="border-2 block max-w-full"
-            />
-        </label>
+        <input
+            placeholder={labelName}
+            type={type}
+            value={value}
+            onChange={handleFunction}
+            className={`border-2 py-2 pl-4 mr-10 my-10 max-w-full rounded  ${customStyles}`}
+        />
     )
 }
